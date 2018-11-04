@@ -9,6 +9,7 @@ import { SessionsService } from '../sessions.service';
 export class SessionsListComponent implements OnInit {
   sessions = [
   ];
+
   constructor(private sessionsService: SessionsService) { }
 
   ngOnInit() {
