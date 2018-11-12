@@ -18,7 +18,6 @@ const getAll = async (req, res) => {
 
 module.exports.getAll = getAll;
 
-
 const get = async (req, res) => {
   let err, currentuser;
   let currentuserId = parseInt(req.params.currentuserId)
