@@ -36,4 +36,5 @@ app.get('/users',users.getAll);
 app.get('/users/:currentuserId', users.get);
 app.post('/users', users.create);
 app.put('/users', users.update);
+app.delete('/users', users.deleteuser);
 module.exports = app;
