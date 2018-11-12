@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => { res.send('Hello World!') })
+app.get('/', (req, res) => { res.send('Hello World!') });
 
 models.sequelize
   .authenticate()
@@ -33,7 +33,7 @@ app.put('/sessions', sessions.update);
 
 
 app.get('/users',users.getAll);
-app.get('/users/:userId', users.get);
+app.get('/users/:currentuserId', users.get);
 app.post('/users', users.create);
 app.put('/users', users.update);
 module.exports = app;
