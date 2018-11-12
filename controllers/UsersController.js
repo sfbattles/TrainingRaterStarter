@@ -37,7 +37,7 @@ module.exports.get = get;
 const update = async function (req, res) {
   let err, currentuser, data;
   data = req.body;
-  console.log (data)
+  console.log (req.body);
   [err, currentuser] = await to(Users.update(data, {
     where: {
       id: data.id
@@ -52,7 +52,6 @@ const update = async function (req, res) {
     res.statusCode = 422
     return res.json({ success: false, error: err });
   }
-
   return res.json(currentuser);
 }
 
