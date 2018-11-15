@@ -32,12 +32,10 @@ const get = async (req, res) => {
 }
 module.exports.get = get;
 
-
 const update = async function (req, res) {
   let err, session, data;
   data = req.body;
-
-
+  
   [err, session] = await to(Sessions.update(data, {
     where: {
       id: data.id

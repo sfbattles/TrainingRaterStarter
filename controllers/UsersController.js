@@ -93,13 +93,14 @@ const create = async function (req, res) {
 module.exports.create = create;
 
 const deleteuser = async function (req, res) {
-  let err, currentuser, data;
+  let err, user, data;
   data = req.body;
   console.log (req.body);
-  [err, currentuser] = await to(Users.destroy(data, {
+  [err, user] = await to(Users.destroy(data, {
     where: {
       id: data.id
-    }
+    },
+    paranoid 
   }));
   if (err) {
     if (typeof err == 'object' && typeof err.message != 'undefined') {
@@ -110,7 +111,7 @@ const deleteuser = async function (req, res) {
     res.statusCode = 422
     return res.json({ success: false, error: err });
   }
-  return res.json(currentuser);
+  return res.json(user);
 }
 
 module.exports.deleteuser = deleteuser;
