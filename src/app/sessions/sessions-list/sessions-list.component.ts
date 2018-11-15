@@ -9,12 +9,13 @@ import { SessionsService, ISession } from '../sessions.service';
 export class SessionsListComponent implements OnInit {
   sessions = [
   ];
-
+ // let currentDate: date;
   constructor(private sessionsService: SessionsService) { }
 
   ngOnInit() {
    // this.sessions = this.sessionsService.getSessions();
    this.sessionsService.getSessions().subscribe((sessions) => this.sessions = sessions);
+//currentDate = this.sessions.startTime;
   }
 
 }
