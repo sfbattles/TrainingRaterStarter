@@ -8,7 +8,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 @NgModule({
     declarations: [
       UsersListComponent,
-      UsersDetailComponent,
+      UserDetailComponent,
     ],
     imports: [
         CommonModule,

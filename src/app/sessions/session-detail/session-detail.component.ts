@@ -26,9 +26,9 @@ export class SessionsDetailComponent implements OnInit {
                    // blank string in if statement false
             this.sessionsService.getSessionById(id)   // getting from ID
                 .subscribe((session) => {
-                    const startTime = new Date(session.startTime);
-                    startTime.setHours(startTime.getHours() - (startTime.getTimezoneOffset() / 60));
-                    session.startTime = startTime.toISOString().slice(0, 16);
+                     const startTime = new Date(session.startTime);
+                     startTime.setHours(startTime.getHours() - (startTime.getTimezoneOffset() / 60));
+                     session.startTime = startTime.toISOString().slice(0, 16);
                     this.session = session;
                     console.log(this.session);
                 });
