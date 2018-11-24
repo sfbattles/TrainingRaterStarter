@@ -4,9 +4,9 @@ import { Observable } from 'rxjs/Observable';
 
 export interface ISession {
   id: number;
-  name: string;
+  Name: string;
   location: string;
-  startTime: Date;
+  startTime: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -20,5 +20,17 @@ export class SessionsService {
 
   getSessions(): Observable<ISession[]> {
     return this.http.get<ISession[]>('http://localhost:3000/sessions');
+  }
+
+  getSessionById(id: number): Observable<ISession> {
+    return this.http.get<ISession>(`http://localhost:3000/sessions/${id}`);
+  }
+
+  save(session: ISession): Observable<ISession | number[]> {
+    if (session.id) {
+      return this.http.put<number[]>(`http://localhost:3000/sessions`, session);
+    } else {
+      return this.http.post<ISession>(`http://localhost:3000/sessions`, session);
+    }
   }
 }
