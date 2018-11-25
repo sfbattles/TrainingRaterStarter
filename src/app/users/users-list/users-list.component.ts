@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService, IUser } from '../users.service';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-users-list',

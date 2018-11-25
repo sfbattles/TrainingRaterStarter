@@ -2,17 +2,15 @@
   <div class="col-md-6">
     <div *ngIf="this.user" class="well well-sm">
       <h4>Users Detail</h4>
-      <label>Location</label>
+      <label>User Name</label>
       <input type="text" class="form-control" [(ngModel)]="user.userName" />
-
-      <label>Location</label>
+      <label>Password</label>
       <input type="text" class="form-control" [(ngModel)]="user.password" />
-      <label>Name</label>
+      <label>First Name</label>
       <input type="text" class="form-control" [(ngModel)]="user.firstName" />
-
-      <label>Location</label>
+      <label>Last Name</label>
       <input type="text" class="form-control" [(ngModel)]="user.lastName" />
-
+<br>
       <button class="btn btn-primary" (click)="save()">Save</button>
       <button class="btn btn-default" (click)="cancel()">Cancel</button>
     </div>

@@ -27,9 +27,10 @@ export class UserDetailComponent implements OnInit {
                // zero in an if statement means false
                // blank string in if statement false
         this.usersService.getUserById(id)   // getting from ID
-            .subscribe((user) => {
-                this.user = user;
-              //  console.log(this.user);
+            .subscribe((currentUser) => {
+                this.user = currentUser;   // what am I doing wrong here.
+                console.log(currentUser);
+                console.log(this.user);
             });
     } else {
         // new
@@ -47,7 +48,7 @@ export class UserDetailComponent implements OnInit {
     }
 }
 
- /* save(): void {
+  save(): void {
     if (!this.formValid()) {
         // TODO CCC: pop message about not valid
         console.log('form invalid');
@@ -60,12 +61,12 @@ export class UserDetailComponent implements OnInit {
         });
 }
 
-private formValid(): boolean; {
+private formValid(): boolean {
     return this.user.firstName && this.user.lastName ? true : false;
 }
 
 cancel(): void {
     this.router.navigate(['users']);
-};
-*/
+}
+
 }
