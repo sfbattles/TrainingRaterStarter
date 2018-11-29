@@ -1,4 +1,4 @@
-pe = require('parse-error');//parses error so you can read error message and handle them accordingly
+pe = require('parse-error'); // parses error so you can read error message and handle them accordingly
 
 to = function (promise) {
   return promise

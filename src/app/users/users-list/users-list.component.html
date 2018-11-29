@@ -1,20 +1,30 @@
-
-<div class="container">
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+<header>
+  <div class="container-fluid">
+  <h1 class="text-center red-text">Training Rater Users</h1>
+  </div>
+</header>
+<br>
+<div class="w3-container">
   <button type=button class="btn btn-primary" (click)="goToAdd()">Add User</button>
   <div class="row">
-    <div class="col-md-3"><strong>User Name</strong></div>
-    <div class="col-md-3"><strong>Password</strong></div>
-    <div class="col-md-3"><strong>First Name</strong></div>
-    <div class="col-md-3"><strong>Last Name</strong></div>
+    <div class="col-md-4"><strong>User Name</strong></div>
+    <div class="col-md-4"><strong>First Name</strong></div>
+    <div class="col-md-4"><strong>Last Name</strong></div>
   </div>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let user of users">
       <div class="row" [style.cursor]="'pointer'" (click)="goToEdit(user.id)" >
-        <div class="col-md-3">{{ user.userName }}</div>
-        <div class="col-md-3">{{ user.password }}</div>
-        <div class="col-md-3">{{ user.firstName }}</div>
-        <div class="col-md-3">{{ user.lastName }}</div>
+        <div class="col-md-4">{{ user.userName }}</div>
+        <div class="col-md-4">{{ user.firstName }}</div>
+        <div class="col-md-4">{{ user.lastName }}</div>
       </div>
     </li>
   </ul>
 </div>
+</body>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUser, UsersService } from '../users.service';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-user-detail',
@@ -10,11 +11,12 @@ import { IUser, UsersService } from '../users.service';
 export class UserDetailComponent implements OnInit {
 
   user: IUser;
-
+  currentUser: IUser;
   constructor(
       private route: ActivatedRoute,
       private router: Router,
       private usersService: UsersService,
+      private toastsManager: ToastsManager,
   ) { }
 
   ngOnInit() {
@@ -50,13 +52,13 @@ export class UserDetailComponent implements OnInit {
 
   save(): void {
     if (!this.formValid()) {
-        // TODO CCC: pop message about not valid
         console.log('form invalid');
+        this.toastsManager.error('Form invalid');
         return;
     }
     this.usersService.save(this.user)
         .subscribe((user) => {
-            // TODO CCC: add a success message
+            this.toastsManager.success('Added Sucessfully');
             this.router.navigate(['users']);
         });
 }

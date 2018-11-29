@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ISession, SessionsService } from '../sessions.service';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
     templateUrl: './session-detail.component.html',
@@ -13,6 +14,7 @@ export class SessionsDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private sessionsService: SessionsService,
+        private toastsManager: ToastsManager,
     ) { }
 
     ngOnInit() {
@@ -57,11 +59,13 @@ export class SessionsDetailComponent implements OnInit {
         if (!this.formValid()) {
             // TODO CCC: pop message about not valid
             console.log('form invalid');
+            this.toastsManager.error('Form invalid');
             return;
         }
         this.sessionsService.save(this.session)
             .subscribe((session) => {
                 // TODO CCC: add a success message
+                this.toastsManager.success('Added Sucessfully');
                 this.router.navigate(['sessions']);
             });
     }

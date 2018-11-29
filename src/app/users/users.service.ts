@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 export interface IUser {
   id: number;
@@ -16,12 +16,12 @@ export interface IUser {
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<{ IUser }[]> {
-    return this.http.get<{ IUser }[]>("http://localhost:3000/users");
+  getUsers(): Observable< IUser []> {
+    return this.http.get< IUser []>("http://localhost:3000/users");
   }
 
-  getUserById(id: number): Observable<{ IUser }> {
-    return this.http.get<{ IUser }>(`http://localhost:3000/users/${id}`);
+  getUserById(id: number): Observable<IUser> {
+    return this.http.get< IUser >(`http://localhost:3000/users/${id}`);
   }
 
   save(user: IUser): Observable<IUser | number[]> {
