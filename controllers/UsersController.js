@@ -118,3 +118,25 @@ const update = async function (req, res) {
 }
 
 module.exports.update = update;
+
+const deleteuser = async function (req, res) {
+  let err, user, data;
+  data = req.body;
+  console.log (req.body);
+  [err, user] = await to(Users.destroy(data, {
+    where: {
+      id: data.id
+    },
+    paranoid
+  }));
+  if (err) {
+    if (typeof err == 'object' && typeof err.message != 'undefined') {
+      err = err.message;
+    }
+     if (typeof code !== 'undefined') res.statusCode = code;
+    res.statusCode = 422
+    return res.json({ success: false, error: err });
+  }
+  return res.json(user);
+}
+ module.exports.deleteuser = deleteuser;
