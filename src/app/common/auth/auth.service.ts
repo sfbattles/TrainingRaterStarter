@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 
 export interface ILoginResponse {
     success: boolean;
-    token?: string;
+    token?: string;   // ? means it may not be in the return.
 }
 
 @Injectable()

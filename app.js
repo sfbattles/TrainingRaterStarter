@@ -3,6 +3,7 @@ require('./config/config');
 const models = require('./models');
 require('./global_functions');
 const sessions = require('./controllers/SessionsController');
+const ratings = require('./controllers/RatingsController');
 const userController  = require('./controllers/UsersController');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -61,17 +62,19 @@ if (CONFIG.app === 'dev') {
   models.sequelize.sync();
 }
 
-app.get('/sessions', sessions.getAll);
-app.get('/sessions/:sessionId', sessions.get);
-app.post('/sessions', sessions.create);
-app.put('/sessions', sessions.update);
+app.get('/sessions', passport.authenticate('jwt', { session: false }), sessions.getAll);
+app.get('/sessions/:sessionId',passport.authenticate('jwt', { session: false }), sessions.get);
+app.post('/sessions', passport.authenticate('jwt', { session: false }), sessions.create);
+app.put('/sessions', passport.authenticate('jwt', { session: false }), sessions.update);
 
 app.post('/users', userController.create);
 app.post('/login', userController.login);
 
 app.get('/users',userController.getAll);
 app.get('/users/:currentuserId', userController.get);
-app.put('/users', userController.update);
+app.put('/users', passport.authenticate('jwt', { session: false }), userController.update);
 app.delete('/users', userController.deleteuser);
+app.post('/ratings/:sessionId', passport.authenticate('jwt', { session: false }), ratings.create);
+app.put('/ratings/:ratingId', passport.authenticate('jwt', { session: false }), ratings.update);
 
 module.exports = app;
